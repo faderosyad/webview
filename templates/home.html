@@ -4,37 +4,41 @@
         <title>IVA Configuration</title>
         <style>
             div {
-            height: 200px;
-            width: 30%;
-            background-color:gray;
+                display: inline-table;
+                width: 400px;
+                height: 200px;
+                margin-bottom: 1em;
+                margin-right: 1em;
+                background-color:gray;
             }
         </style>
     </head>
 
     <body>
-
         <div>
             <h3>Services list</h3>
-            <table border= 1>
+            <table align ="center" width="480">
                 <tr>
                     <th>Service</th>
                     <th>Timestamp</th>
                 </tr>
                 <tr>
-                    <td>{{service}}</td>
-                    <td>{{timestamp}}</td>
+                    <td align = "center">{{service}}</td>
+                    <td align = "center">{{timestamp}}</td>
                 </tr>
             </table>
         </div>
-
         <div>
             <h3>Assign</h3>
-            <input type="checkbox" name="key1"> Key Value <br>
-            <input type="checkbox" name="key2"> Key Value <br>
-            <input type="checkbox" name="key3"> Key Value <br>
-            <input type="checkbox" name="key4"> Key Value <br>
+            <form>
+                    <input type="checkbox" name="key1"> Key Value <br>
+                    <input type="checkbox" name="key2"> Key Value <br>
+                    <input type="checkbox" name="key3"> Key Value <br>
+                    <input type="checkbox" name="key4"> Key Value <br> <br>
+                    <input type="submit" name="Assign">
+            </form>
         </div>
-        <br>
+
         <form action = "http://localhost:2000/ivaconfig" method = "POST">
             Service:<br>
             <input type="text" name="service"><br><br>

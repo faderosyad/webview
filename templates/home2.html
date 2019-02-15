@@ -5,33 +5,32 @@
     <title>Key and Value Configuration</title>
     <style>
         div {
-        height: 200px;
-        width: 60%;
+        float: center;
+        height: 30%;
+        width: 500px;
+        margin-bottom: 1em;
+        background-color:gray;
         }
     </style>
 </head>
 
 <body>
-    <h1>
-        Key and Value
-    </h1>
-    <br>
     <div>
         <h3>Key and Value list</h3>
-        <table border= 1>
+        <table text-align: center align ="center" width="480">
                 <tr>
                   <th>Key</th>
                   <th>Value</th>
                   <th>Timestamp</th>
                 </tr>
                 <tr>
-                  <td>{{key}}</td>
-                  <td>{{value}}</td>
-                  <td>{{timestamp}}</td>
+                  <td align = "center">{{key}}</td>
+                  <td align = "center">{{value}}</td>
+                  <td align = "center">{{timestamp}}</td>
                 </tr>
                 </table>
     </div>
-    <br>
+    
     <form action = "http://localhost:2000/keyvalue" method = "POST">
         <span>
             Key:<input type="text" name="key">
