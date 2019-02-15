@@ -6,8 +6,7 @@
     <style>
         div {
         height: 200px;
-        width: 50%;
-        background-color:gray;
+        width: 60%;
         }
     </style>
 </head>
@@ -17,13 +16,33 @@
         Key and Value
     </h1>
     <br>
-    <form action="localhost:5000/form_example" method="POST">
-        Key:<br>
-        <input type="text" name="key"><br>
-        Value:<br>
-        <input type="text" name="value"><br>
-        <input type="submit" name="Submit">
-      </form> 
+    <div>
+        <h3>Key and Value list</h3>
+        <table border= 1>
+                <tr>
+                  <th>Key</th>
+                  <th>Value</th>
+                  <th>Timestamp</th>
+                </tr>
+                <tr>
+                  <td>{{key}}</td>
+                  <td>{{value}}</td>
+                  <td>{{timestamp}}</td>
+                </tr>
+                </table>
+    </div>
+    <br>
+    <form action = "http://localhost:2000/keyvalue" method = "POST">
+        <span>
+            Key:<input type="text" name="key">
+            Value:<input type="text" name="value">
+        </span>
+        <span>
+            <input type="submit" value="Submit">
+        </span>
+    </form>
+    
+
 </body>
 
 </html>

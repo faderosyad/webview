@@ -1,42 +1,44 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>IVA Configuration</title>
-    <style>
-        div {
-        height: 200px;
-        width: 40%;
-        background-color:gray;
-        display:inline-block;
-        }
-    </style>
-</head>
+    <head>
+        <title>IVA Configuration</title>
+        <style>
+            div {
+            height: 200px;
+            width: 30%;
+            background-color:gray;
+            }
+        </style>
+    </head>
 
-<body>
-    <h1>
-        IVA Configuration
-    </h1>
-    <br>
-    <div>
-        <input type="checkbox" name="key1"> Service <br>
-        <input type="checkbox" name="key2"> Service <br>
-        <input type="checkbox" name="key3"> Service <br>
-        <input type="checkbox" name="key4"> Service <br>
-    </div>
+    <body>
 
-    <div>
-        <p>Assign</p>
-        <input type="checkbox" name="key1"> Key Value <br>
-        <input type="checkbox" name="key2"> Key Value <br>
-        <input type="checkbox" name="key3"> Key Value <br>
-        <input type="checkbox" name="key4"> Key Value <br>
-    </div>
+        <div>
+            <h3>Services list</h3>
+            <table border= 1>
+                <tr>
+                    <th>Service</th>
+                    <th>Timestamp</th>
+                </tr>
+                <tr>
+                    <td>{{service}}</td>
+                    <td>{{timestamp}}</td>
+                </tr>
+            </table>
+        </div>
 
-    <form>
-        Service:<br>
-        <input type="text" name="layanan"><br>
-        <input type="submit" name="Tambah Baru">
-      </form> 
-</body>
+        <div>
+            <h3>Assign</h3>
+            <input type="checkbox" name="key1"> Key Value <br>
+            <input type="checkbox" name="key2"> Key Value <br>
+            <input type="checkbox" name="key3"> Key Value <br>
+            <input type="checkbox" name="key4"> Key Value <br>
+        </div>
+        <br>
+        <form action = "http://localhost:2000/ivaconfig" method = "POST">
+            Service:<br>
+            <input type="text" name="service"><br><br>
+            <input type="submit" name="Tambah Baru">
+        </form> 
+    </body>
 </html>
