@@ -4,21 +4,92 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>IVA Configuration</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <style>
-            div {
+            .bikinan {
                 display: inline-table;
                 width: 400px;
                 height: 200px;
                 margin-bottom: 1em;
                 margin-right: 1em;
+                margin-top: 1em;
                 background-color:gray;
+            }
+
+            /* Add a black background color to the top navigation */
+            .topnav {
+            background-color: #333;
+            overflow: hidden;
+            }
+
+            /* Style the links inside the navigation bar */
+            .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            }
+
+            /* Change the color of links on hover */
+            .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+            }
+
+            /* Add a color to the active/current link */
+            .topnav a.active {
+            background-color: purple;
+            color: white;
+            }
+
+            /* Style the form - display items horizontally */
+            .form-inline {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            text-align: center;
+            }
+
+            /* Add some margins for each label */
+            .form-inline label {
+            margin: 5px 10px 5px 0;
+            }
+
+            /* Style the input fields */
+            .form-inline input {
+            vertical-align: middle;
+            margin: 5px 10px 5px 0;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            }
+
+            /* Style the submit button */
+            .form-inline button {
+            padding: 10px 20px;
+            background-color: dodgerblue;
+            border: 1px solid #ddd;
+            color: white;
+            }
+
+            .form-inline button:hover {
+            background-color: royalblue;
             }
         </style>
     </head>
 
     <body>
-        <div>
+        <div class="topnav">
+            <a class="active">Nodeflux</a>
+        </div>
+
+        <div class="bikinan" align="center">
             <h3>Services list</h3>
             <table align ="center" width="480">
                 <tr>
@@ -31,7 +102,7 @@
                 </tr>
             </table>
         </div>
-        <div>
+        <div class="bikinan" align="center">
             <h3>Assign</h3>
             <form>
                     <input type="checkbox" name="key1"> Key Value <br>
@@ -44,8 +115,10 @@
 
         <form action = "http://localhost:2000/ivaconfig" method = "POST">
             Service:<br>
-            <input type="text" name="service"><br><br>
-            <input type="submit" name="Tambah Baru">
+            <span>
+                <input type="text" name="service"><br><br>
+                <button type="submit" name="Submit">Submit</button>
+            </span>
         </form> 
     </body>
 </html>

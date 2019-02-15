@@ -12,7 +12,6 @@ def ivaconfig():
     if request.method == 'POST': 
       service = request.form.get('service')
       timestamp = get_timestamp()
-
       return render_template('home.html', service = service, timestamp = timestamp)
 
     return render_template('home.html')
