@@ -12,12 +12,12 @@
         <style>
             .bikinan {
                 display: inline-table;
-                width: 400px;
-                height: 200px;
+                width: 500px;
+                height: 40%;
                 margin-bottom: 1em;
                 margin-right: 1em;
                 margin-top: 1em;
-                background-color:gray;
+                border-style: solid;
             }
 
             /* Add a black background color to the top navigation */
@@ -81,6 +81,21 @@
             .form-inline button:hover {
             background-color: royalblue;
             }
+
+            table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            }
+
+            th, td {
+            text-align: left;
+            padding: 16px;
+            }
+
+            tr:nth-child(even) {
+            background-color: #f2f2f2
+            }
         </style>
     </head>
 
@@ -102,21 +117,23 @@
                 </tr>
             </table>
         </div>
-        <div class="bikinan" align="center">
-            <h3>Assign</h3>
+        <div class="bikinan">
+            <h3 align="center">Assign</h3>
             <form>
                     <input type="checkbox" name="key1"> Key Value <br>
                     <input type="checkbox" name="key2"> Key Value <br>
                     <input type="checkbox" name="key3"> Key Value <br>
                     <input type="checkbox" name="key4"> Key Value <br> <br>
-                    <input type="submit" name="Assign">
+                    <button type="submit" name="Assign" class="float-right">Assign</button>
             </form>
         </div>
 
         <form action = "http://localhost:2000/ivaconfig" method = "POST">
             Service:<br>
             <span>
-                <input type="text" name="service"><br><br>
+                <input type="text" name="service">
+            </span>
+            <span>
                 <button type="submit" name="Submit">Submit</button>
             </span>
         </form> 

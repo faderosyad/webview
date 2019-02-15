@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, json
 from datetime import datetime
 
 
@@ -22,8 +22,15 @@ def keyvalue():
       key = request.form.get('key')
       value = request.form['value']
       timestamp = get_timestamp()
+      keyjson = request.get_json(key)
+      valuejson = request.get_json(value)
 
-      return render_template('home2.html', key=key, value=value, timestamp=timestamp)
+      response=app.response_class(
+        response = json.dumps(keyjson, valuejson),
+        status=200,
+        mimetype='application/json'
+      )
+      return response
 
     return render_template('home2.html')
 
