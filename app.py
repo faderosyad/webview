@@ -22,15 +22,13 @@ def keyvalue():
       key = request.form.get('key')
       value = request.form['value']
       timestamp = get_timestamp()
-      keyjson = request.get_json(key)
-      valuejson = request.get_json(value)
 
-      response=app.response_class(
-        response = json.dumps(keyjson, valuejson),
-        status=200,
-        mimetype='application/json'
-      )
-      return response
+      url = 'http://127.0.0.1:5000/api/v1/kvs'
+      headers= {'application/json'}
+      payload = {'key': 'value'}
+      req = request.post(url, headers = headers, data=json.dumps(payload))
+
+      return req
 
     return render_template('home2.html')
 
