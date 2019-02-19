@@ -24,11 +24,11 @@ def keyvalue():
       timestamp = get_timestamp()
 
       url = 'http://127.0.0.1:5000/api/v1/kvs'
-      headers= {'application/json'}
-      payload = {'key': 'value'}
-      req = request.post(url, headers = headers, data=json.dumps(payload))
+      headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+      data = {"key": key,"value": value}
+      r = request.post(url, data=json.dumps(data), headers=headers)
 
-      return req
+      return r
 
     return render_template('home2.html')
 

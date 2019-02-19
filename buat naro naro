@@ -1,0 +1,39 @@
+@app.route('/form_example', methods=['GET', 'POST'])
+def form_example():
+    if request.method == 'POST': 
+      key = request.form.get('key')
+      value = request.form['value']
+      timestamp = get_timestamp()
+
+      return '''<table style="width:50%" border = 1>
+                <tr>
+                  <th>Key</th>
+                  <th>Value</th>
+                  <th>Timestamp</th>
+                </tr>
+                <tr>
+                  <td>{}</td>
+                  <td>{}</td>
+                  <td>{}</td>
+                </tr>
+                </table>'''.format(key, value, timestamp)
+
+    return '''<form action = "http://localhost:5000/api/v1/kvs" method = "POST">
+            Key:<br> <input type="text" name="key"><br><br>
+            Value:<br> <input type="text" name="value"><br><br>
+            <input type="submit" value="Submit"><br>
+            </form>'''
+
+    key = request.form.get('key')
+      value = request.form['value']
+      timestamp = get_timestamp()
+      keyjson = request.get_json(key)
+      valuejson = request.get_json(value)
+
+      response=app.response_class(
+        response = json.dumps(keyjson, valuejson),
+        status=200,
+        mimetype='application/json'
+      )
+      payload = {'key':'value'}
+      return request.post('http://localhost:5000/api/v1/kvs', payload)
