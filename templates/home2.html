@@ -14,7 +14,7 @@
         float: center;
         height: 30%;
         width: 700px;
-        margin-bottom: 1em;
+        margin-bottom: 2em;
         margin-top: 1em;
         }
 
@@ -99,7 +99,7 @@
         }
 
         th, td {
-        text-align: left;
+        text-align: center;
         padding: 16px;
         }
 
@@ -107,6 +107,13 @@
         background-color: #f2f2f2
         } 
     </style>
+    <script type='text/javascript'>
+        function tambahbaru(){
+            var div1 = document.createElement('div');
+            div1.innerHTML = document.getElementById('tambahnewlink').innerHTML;
+            document.getElementById('newlink').appendChild(div1);
+        }
+    </script>
 </head>
 
 <body>
@@ -114,31 +121,43 @@
         <a class="active">Nodeflux</a>
     </div> 
 
-    <div class="bikinan" align="center">
-        <h3>Key and Value list</h3>
-        <table text-align= "center" align ="center" width="680">
-                <tr>
-                  <th align = "center">Key</th>
-                  <th align = "center">Value</th>
-                  <th align = "center">Timestamp</th>
-                </tr>
-                <tr>
-                  <td align = "center">{{key}}</td>
-                  <td align = "center">{{value}}</td>
-                  <td align = "center">{{timestamp}}</td>
-                </tr>
-                </table>
+    <div align="center">
+            <div class="bikinan" align="center">
+                    <h3>Key and Value list</h3>
+                    <table text-align= "center" align ="center" width="680">
+                            <tr>
+                              <th align = "center">Key</th>
+                              <th align = "center">Value</th>
+                              <th align = "center">Timestamp</th>
+                            </tr>
+                            <tr>
+                              <td align = "center">{{key}}</td>
+                              <td align = "center">{{value}}</td>
+                              <td align = "center">{{timestamp}}</td>
+                            </tr>
+                            </table>
+                </div>
+                
+                <form action = "{{url_for('keyvalue') }}" id="formisi" method = "POST">
+                        <div id="newlink" align="center" style="margin-bottom: 1em">
+                            <span>
+                                Key: <input type="text" name="key">
+                                Value: <input type="text" name="value"><br>
+                            </span>
+                        </div>
+                    <div align="center">
+                        <a text-align="center" href="javascript:tambahbaru()">Tambah</a><br>
+                        <button type="submit" value="Submit">Submit</button>
+                    </div>
+                </form>
+                <!-- Template -->
+                <div id="formisibaru" style="display: none" style="margin-top: 1em">
+                    <div id="tambahnewlink" style="margin-top: 1em">
+                            Key: <input type="text" name="key">
+                            Value: <input type="text" name="value"><br>
+                    </div>
+                </div>
     </div>
-    
-    <form action = "http://localhost:5000/api/v1/kvs" method = "POST">
-        <span>
-            Key:<input type="text" name="key">
-            Value:<input type="text" name="value">
-        </span>
-        <span>
-            <button type="submit" value="Submit">Submit</button>
-        </span>
-    </form>
 </body>
 
 </html>
