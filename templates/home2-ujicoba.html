@@ -106,37 +106,28 @@
         tr:nth-child(even) {
         background-color: #f2f2f2
         } 
-        ul {
-        padding: 0;
-        margin: 0;
-        }
-
-        ul li {
-        list-style: none;
-        }
-
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
+    <script type='text/javascript'>
         var i = 1;
-        function tambahbaru(){
-            document.getElementById("countexp").value= i;
-            var newChild = document.createElement("tr");
-            var row = document.getElementById("exp").insertRow(-1);
-
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-
-            cell1.innerHTML = "Key";
-            cell2.innerHTML = "<input type='text' id='key"+ i +"' name='key"+ i+"'/>";  
-            cell3.innerHTML = "Value";
-            cell4.innerHTML = "<input type='text' id='value"+ i +"' name='value"+ i+"'/>";
-            
-            i += 1;
-        }
-    </script>
+            function tambahbaru(){
+                var div = []
+                div[i] = document.createElement('div' + i);
+                document.getElementById('key').setAttribute("name", "key" + i);
+                //document.getElementById('key').setAttribute("id", "key" + i);
+                document.getElementById('value').setAttribute("name", "value" + i);
+                //document.getElementById('value').setAttribute("id", "value" + i);
+                document.getElementById('newlink').appendChild(div[i]);
+                i += 1;
+            }
+            $(function() {
+        $("#addmore").click(function(e) {
+          e.preventDefault();
+          $("#fieldisi").append("<li>&nbsp;</li>");
+          $("#fieldisi").append("<li><input type='text' name='key[]' placeholder='Key'/></li>");
+          $("#fieldisi").append("<li><input type='text' name='value[]' placeholder='Value'/></li>");
+        });
+      });
+        </script>
 </head>
 
 <body>
@@ -147,41 +138,32 @@
     <div align="center">
             <div class="bikinan" align="center">
                     <h3>Key and Value list</h3>
+                    <br>
+                    <h1>{{nilai}}</h1>
+                    <br>
                     <table text-align= "center" align ="center" width="680">
                             <tr>
                               <th align = "center">Key</th>
                               <th align = "center">Value</th>
-                              <th align = "center">Timestamp</th>
                             </tr>
                             <tr>
                               <td align = "center">{{key}}</td>
                               <td align = "center">{{value}}</td>
-                              <td align = "center">{{timestamp}}</td>
                             </tr>
                             </table>
                 </div>
                 
-                <form action = "{{url_for('keyvalue') }}" id="formisi" method = "POST">
+                <form action = "{{url_for('keyvalue') }}" id="formisi1" method = "POST" role="form">
+                    <div id="buatngisi>" class="col-md-4">
                         <div id="newlink" align="center" style="margin-bottom: 1em">
-                            <table id='fieldisi'>
-                                    <tr >
-                                        <td>Key</td>
-                                        <td><input type="text" id="key0" name="key0"></td>
-                                        <td>Value</td>
-                                        <td><input type="text" id="value0" name="value0"></td>
-                                    </tr>
-                                    <input type="text" hidden="hidden" value="1" id="countexp" name="countexp"/>
-                                    <tbody id="exp" name="exp"></tbody>
-                            </table>
+                            {{form.key.label}} {{form.key}} <br>
+                            {{form.value.label}} {{form.value}}
                         </div>
+                    </div>
                     <div align="center">
-                        <span>
-                            <a name="tambahbaru" value="tambahin" href="javascript:tambahbaru()">Add More</a><br>
-                            <button type="submit" value="Submit">Submit</button>
-                        </span>
+                        {{form.submit}}
                     </div>
                 </form>
-    </div>
 </body>
 
 </html>
