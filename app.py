@@ -14,6 +14,17 @@ KVStoreEndpoint = 'http://127.0.0.1:5000/api/v1/kvstore' #Endpoint URL untuk Gen
 ServicesEndpoint = 'http://127.0.0.1:5000/api/v1/services' #Endpoint URL untuk Genesis IVA bagian Services
 headers = {'Content-type': 'application/json'} # Header yang dapat diterima oleh Genesis IVA
 
+#Function untuk menerima data dari Genesis IVA dengan method GET (Services)
+def gettingdatas():
+    terimas = requests.get(ServicesEndpoint, headers=headers)
+    return terimas
+
+#Function untuk mengirimkan data ke Genesis IVA dengan method POST (Services)
+def postingdatas(service):
+    data = {'service_name': service}
+    kirims = requests.post(ServicesEndpoint, data=json.dumps(data), headers=headers)
+    return kirims
+
 #Function untuk menerima data dari Genesis IVA dengan method GET (KeyValue)
 def gettingdata():
     terima = requests.get(KVStoreEndpoint, headers=headers)
@@ -30,9 +41,14 @@ app = Flask(__name__)
 @app.route('/ivaconfig', methods = ['POST', 'GET'])
 def ivaconfig():
     if request.method == 'POST': 
-      service = request.form.get('service')
-      timestamp = get_timestamp()
-      return render_template('home.html', service = service, timestamp = timestamp)
+    #iterasi untuk mengirimkan banyak data service secara bersamaan
+            i = 0
+            while i < 100:
+                service = request.form['service' + str(i)]
+                kirimins = postingdatas(service)
+                i += 1
+            timestamp = get_timestamp()
+            return render_template('home.html', service = service, timestamp = timestamp)
 
     return render_template('home.html')
     

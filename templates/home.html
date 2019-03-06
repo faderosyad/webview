@@ -97,6 +97,23 @@
             background-color: #f2f2f2
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+                var i = 1;
+                function tambahbaru(){
+                    document.getElementById("countexp").value= i;
+                    var newChild = document.createElement("tr");
+                    var row = document.getElementById("exp").insertRow(-1);
+        
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+        
+                    cell1.innerHTML = "Service";
+                    cell2.innerHTML = "<input type='text' id='service"+ i +"' name='service"+ i+"'/>";  
+                    
+                    i += 1;
+                }
+            </script>
     </head>
 
     <body>
@@ -128,14 +145,24 @@
             </form>
         </div>
 
-        <form action = "http://localhost:2000/ivaconfig" method = "POST">
-            Service:<br>
-            <span>
-                <input type="text" name="service">
-            </span>
-            <span>
-                <button type="submit" name="Submit">Submit</button>
-            </span>
-        </form> 
+        <form action = "{{url_for('ivaconfig') }}" method = "POST">
+            <div>
+                <table id='fieldisi'>
+                    <tr >
+                        <td>Service</td>
+                        <td><input type="text" id="service0" name="service0"></td>
+                    </tr>
+                    <input type="text" hidden="hidden" value="1" id="countexp" name="countexp"/>
+                    <tbody id="exp" name="exp"></tbody>
+                </table>
+            </div>
+            <div>
+                <span>
+                    <a name="tambahbaru" value="tambahin" href="javascript:tambahbaru()">Add More</a><br>
+                    <button type="submit" value="Submit">Submit</button>
+                </span>
+            </div>
+        </form>
+
     </body>
 </html>
