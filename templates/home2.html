@@ -10,12 +10,16 @@
     <!--Fontawesome CDN-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <style>
-        .bikinan {
+        /*.bikinan {
         float: center;
         height: 30%;
         width: 700px;
         margin-bottom: 2em;
         margin-top: 1em;
+        }*/
+
+        .inlineTable {
+        display: inline-block;
         }
 
         /* Add a black background color to the top navigation */
@@ -145,21 +149,31 @@
     </div> 
 
     <div align="center">
-            <div class="bikinan" align="center">
-                    <h3>Key and Value list</h3>
-                    <table text-align= "center" align ="center" width="680">
+            <div class="bikinan">
+                <h3>Key and Value list</h3>
+                    <!--disini dimasukin perulangan keynya-->
+                    <table text-align="center" align="center" class="inlineTable">
                             <tr>
-                              <th align = "center">Key</th>
-                              <th align = "center">Value</th>
-                              <th align = "center">Timestamp</th>
+                                <th align="center">Key</th>
                             </tr>
+                            {% for key in listkey %}
                             <tr>
-                              <td align = "center">{{key}}</td>
-                              <td align = "center">{{value}}</td>
-                              <td align = "center">{{timestamp}}</td>
+                                <td align="center">{{key}}</td>
                             </tr>
-                            </table>
-                </div>
+                            {% endfor %}
+                    </table>
+                    <!--disini dimasukin perulangan keynya-->
+                    <table text-align="center" align="center" class="inlineTable">                            
+                            <tr>
+                                <th align="center">Value</th>
+                            </tr>
+                            {% for value in listvalue %}
+                            <tr>
+                                <td align="center">{{value}}</td>
+                            </tr>
+                            {% endfor %}
+                    </table>
+            </div>
                 
                 <form action = "{{url_for('keyvalue') }}" id="formisi" method = "POST">
                         <div id="newlink" align="center" style="margin-bottom: 1em">
